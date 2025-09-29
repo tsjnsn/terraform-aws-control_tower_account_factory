@@ -73,6 +73,10 @@ output "gitlab_selfmanaged_url" {
   value = var.gitlab_selfmanaged_url
 }
 
+output "azuredevops_url" {
+  value = var.azuredevops_url
+}
+
 output "account_request_repo_name" {
   value = var.account_request_repo_name
 }

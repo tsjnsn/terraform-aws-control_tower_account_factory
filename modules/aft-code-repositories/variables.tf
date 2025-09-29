@@ -38,6 +38,10 @@ variable "gitlab_selfmanaged_url" {
   type = string
 }
 
+variable "azuredevops_url" {
+  type = string
+}
+
 variable "account_request_table_name" {
   type = string
 }
