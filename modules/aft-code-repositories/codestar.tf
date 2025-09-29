@@ -64,3 +64,25 @@ resource "aws_codeconnections_host" "gitlabselfmanaged" {
     }
   }
 }
+
+resource "aws_codeconnections_connection" "azuredevops" {
+  count    = local.vcs.is_azuredevops ? 1 : 0
+  name     = "ct-aft-azuredevops-connection"
+  host_arn = aws_codeconnections_host.azuredevops[0].arn
+}
+
+resource "aws_codeconnections_host" "azuredevops" {
+  count             = local.vcs.is_azuredevops ? 1 : 0
+  name              = "azuredevops-host"
+  provider_endpoint = var.azuredevops_url
+  provider_type     = "AzureDevOps"
+
+  dynamic "vpc_configuration" {
+    for_each = var.aft_enable_vpc ? [1] : []
+    content {
+      security_group_ids = var.security_group_ids
+      subnet_ids         = var.subnet_ids
+      vpc_id             = var.vpc_id
+    }
+  }
+}
