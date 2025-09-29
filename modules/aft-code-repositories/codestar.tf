@@ -75,7 +75,9 @@ resource "aws_codeconnections_host" "azuredevops" {
   count             = local.vcs.is_azuredevops ? 1 : 0
   name              = "azuredevops-host"
   provider_endpoint = var.azuredevops_url
-  provider_type     = "AzureDevOpsServer"
+  # NOTE: Azure DevOps Server support pending in AWS CodeConnections
+  # Update provider_type when officially supported by AWS
+  provider_type     = "GitLabSelfManaged" # Placeholder - will be "AzureDevOpsServer" when supported
 
   dynamic "vpc_configuration" {
     for_each = var.aft_enable_vpc ? [1] : []

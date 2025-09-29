@@ -200,7 +200,7 @@ variable "aft_feature_delete_default_vpcs_enabled" {
 
 
 variable "vcs_provider" {
-  description = "Customer VCS Provider - valid inputs are codecommit, bitbucket, github, githubenterprise, gitlab, gitlabselfmanaged, or azuredevops"
+  description = "Customer VCS Provider - valid inputs are codecommit, bitbucket, github, githubenterprise, gitlab, gitlabselfmanaged, or azuredevops (Azure DevOps support pending AWS implementation)"
   type        = string
   default     = "codecommit"
   validation {
